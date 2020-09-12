@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+    <!-- script tag is where Javascript goes to -->
+    <script>
+        for(var i = 0; i < 400; i++) {
+            console.log("This round is " + i);
+        }
+        var x = 1;
+        var order = 'beer';
+
+        if (x > 50) {
+            document.write("<h1>He's over 50</h1><h4>and he would like some " + order + " at table 12.</h4>");
+            console.log("He's over 50 and he would like some " + order + " at table 12.");
+        } else if (x <= 50 && x > 40){
+            document.write("<h1>A middle aged dude</h1><h4>just ordered some " + order + ".</h4>");
+            console.log("A middle aged dude just ordered some " + order + ".");
+        } else if (x <= 40 && x > 30){
+            document.write("<h1>This " + x + "-year-old</h1><h4>wants some " + order + " right now!</h4>");    
+            console.log("This " + x + "-year-old wants some " + order + " right now!");
+        }  else if (x <= 30 && x >= 18){
+            document.write("<h1>Give the kids some " + order + "!</h1>");
+            console.log("Give the kids some " + order + "!");
+        }  else if (x < 18){
+            document.write("<h1>No " + order + " for you, kiddo!</h1>");
+            console.log("No " + order + " for you, kiddo!");
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <h1>Welcome to example page</h1>
+    <p> Lorem ipsum dolorem...   </p>
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <!-- the script tag is where Javascript goes to -->
+    <script>
+      var person1 = {
+        firstName: "Judith",
+        lastName: "Hämäläinen",
+        age: 22,
+        eyeColor: "brown",
+        address: "Suezinkatu 3 A 2, 00220 Helsinki",
+        telephone: "0405888509",
+        getFullName: function () {
+          return this.firstName + " " + this.lastName;
+        },
+      };
+
+      var person2 = {
+        firstName: "Laura",
+        lastName: "Ripatti",
+        age: 21,
+        eyeColor: "brown",
+        address: "Matinkatu, 2  56",
+        telephone: "040345090895",
+        getFullName: function () {
+          return this.firstName + " " + this.lastName;
+        },
+      };
+
+      var person3 = {
+        firstName: "Chris",
+        lastName: "da Silva",
+        age: 19,
+        eyeColor: "brown",
+        address: "Hyväntoivontie, 00220 Helsinki",
+        telephone: "0404992112",
+        getFullName: function () {
+          return this.firstName + " " + this.lastName;
+        },
+      };
+
+      var person4 = {
+        firstName: "Martta",
+        lastName: "Franke",
+        age: 43,
+        eyeColor: "green",
+        address: "Suezinkatu 3 A 2, 00220 Helsinki",
+        telephone: "04029200113",
+        getFullName: function () {
+          return this.firstName + " " + this.lastName;
+        },
+      };
+
+      var taulu = [person1, person2, person3, person4];
+      //create table!
+
+      for (i = 0; i < taulu.length; i++) {
+        console.log(taulu[i].firstName + " " + taulu[i].lastName);
+        //TAI console.log(taulu[i].getFullName())
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>Welcome to example page</h1>
+    <p>Lorem ipsum dolorem...</p>
+  </body>
+</html>
