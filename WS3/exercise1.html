@@ -1,0 +1,176 @@
+<HTML>
+  
+  <style>
+    body {
+      font-family: "Trebuchet MS", Helvetica, sans-serif;
+      color: #333333;
+    }
+
+    div {
+      width: 200px;
+      height: 100px;
+      border: 1px solid black;
+    }
+    table, tr, td {
+      border: 1px solid gray;
+      width: 70%;
+    }
+  </style>
+
+  <script>
+    //Button1 date variable
+    var date = new Date();
+    
+    //Button2 function 
+    function showTable() {
+      var htmlTable = `
+        <style>
+          table, tr, td {
+            border: 1px solid gray;
+            width: 70%;
+          }
+        </style>
+        <table>
+          <tr>
+            <th>Class Name</th>
+            <th>Class Code</th>
+            <th>Teacher's Name</th>
+          </tr>
+          <tr>
+            <td>JavaScript</td>
+            <td>TO00BL10-3006</td>
+            <td>Mika Stenberg</td>
+          </tr>
+          <tr>
+            <td>Digitaalisen palvelun mallinnus</td>
+            <td>R0328-3004</td>
+            <td>Petri Säilynoja</td>
+          </tr>
+          <tr>
+            <td>Johtaminen ja esimiestyöskentely</td>
+            <td>R0052-3006</td>
+            <td>Seppo Koponen</td>
+          </tr>
+        </table>
+      `;
+
+      document.write(htmlTable);
+    }
+
+      //Button 3 function
+      function printTable() {
+        var persons = ["Nyssa P. Skinner", "593-4241 Lacus, St.","Cape Verde", 
+          "Camilla F. Strickland","391-2150 Ac Rd.","Andorra",
+          "Reagan U. Andrews", "P.O. Box 472, 2271 Mauris Ave","Faroe Islands",
+          "Kelsey D. Clark", "P.O. Box 866, 7793 Aliquet Ave","Bulgaria"
+        ];
+
+        document.write(
+          "<table style='border: 1px solid black; border-collapse: collapse;'>" + 
+            "<tr>" + 
+              "<th style='border: 1px solid black;'>" + "Name" + "</th>" +
+              "<th style='border: 1px solid black;'>" + "Address" + "</th>" +
+              "<th style='border: 1px solid black;'>" + "Country" + "</th>" +
+            "</tr>");
+
+        i=0;
+        while(i<persons.length) {
+          if(i%3==0) {
+            document.write("<tr style='border: 1px solid black'>");
+          }
+          document.write("<td style='border: 1px solid black; padding: 5px;'>" + persons[i] + "</td>");
+          if(i==2 || i==5 || i==8 || i==11){
+            document.write("</tr>");
+          }
+          i++;
+          }
+
+        document.write("</table>");
+        
+        }
+      
+  </script>
+
+  <h1>Workshop 3: JavaScript Events</h1>
+
+  <h2>Exercise 1</h2>
+  <p>&nbsp;Below you will see three buttons. Edit the source code and add an onClick-events to these buttons.</p>
+  <p>
+    <button onclick="alert('You clicked me!\nToday\'s date is: ' + date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear() + '.')">Button 1</button>
+    <button onclick="showTable()">Button 2</button>
+    <button onclick="printTable()">Button 3</button>
+  </p>
+
+  <ul>
+    <li>Button 1 should open an alert-button, which will say "You clicked me!" </li>
+    <li> When you see the button working, add the current date after the text by using the Date() -function. HINT. You can get spesific parts of the date by first creating a date 
+    object var pvm = new Date(). And then calling for methods such as pvm.getDate() and pvm.getHours() etc. See <a 
+  href="https://www.w3schools.com/js/js_date_methods.asp" /> this for details.</a>
+    </li>
+    <li>Button 2 should call a function called showTable()". ShowTable function should output a simple HTML-table (below) to the page. Use document.write to print data. Feel 
+    free to modify the data on the table. </li>
+    HINT. You can print multiple lines using backticks:
+  <xmp>
+  var html = `
+    <h1>
+      <b>Some HTML here</b>
+    </h1>
+  `;
+  </xmp>
+
+  <br>
+
+  <table id="example" class="display" cellspacing="0" width="100%">
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Salary</th>
+              </tr>
+          </thead>
+          <tfoot>
+          </tfoot>
+          <tbody>
+              <tr>
+                  <td>Tiger Nixon</td>
+                  <td>System Architect</td>
+                  <td>$320,800</td>
+              </tr>
+              <tr>
+                  <td>Garrett Winters</td>
+                  <td>Accountant</td>
+                  <td>$170,750</td>
+              </tr>
+              <tr>
+                  <td>Ashton Cox</td>
+                  <td>Junior Technical Author</td>
+                  <td>$86,000</td>
+              </tr>
+              <tr>
+                  <td>Cedric Kelly</td>
+                  <td>Senior Javascript Developer</td>
+                  <td>$433,060</td>
+              </tr>
+              <tr>
+                  <td>Airi Satou</td>
+                  <td>Accountant</td>
+                  <td>$162,700</td>
+              </tr>
+
+          </tbody>
+      </table>
+      <br>
+
+    <li>Button 3 should print out an HTML table (Name, Addrees, Country) using data from the following JavaScript array. HINT: Use looping to go through the array and print 
+  the data surrounded by HTML-tags to create the table.  </li>
+  <xmp>
+  var persons = ["Nyssa P. Skinner", "593-4241 Lacus, St.","Cape Verde", 
+          "Camilla F. Strickland","391-2150 Ac Rd.","Andorra",
+          "Reagan U. Andrews", "P.O. Box 472, 2271 Mauris Ave","Faroe Islands",
+          "Kelsey D. Clark", "P.O. Box 866, 7793 Aliquet Ave","Bulgaria"
+  ];
+
+  </xmp>
+  </ul>
+
+</html>
