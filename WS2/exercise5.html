@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <!-- the script tag is where Javascript goes to -->
+    
+  </head>
+
+  <body>
+    <h1>Welcome to example page</h1>
+    <p>Lorem ipsum dolorem...</p>
+    
+    <script>
+        //DISPLAYING THE IMAGE WITH THE LINK DIRECTLY IN THE TAG
+        document.write("<img src='http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg' alt 'image'>");
+
+        function imageFunction() {
+            var images =[
+            "http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg", 
+            "http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg", 
+            "http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg"
+            ];
+            
+            var number = Math.round(Math.random()*2);
+
+            document.write("<br>" + "<br>" + "<img src='" + images[number] + "' alt='image2'>");
+            
+            //CODE BELOW IS WRONG BECAUSE THE images[number] IS PASSED AS TEXT
+            //document.write("<img src='images[number]' alt='image2'>" + "<br>" + "<br>");
+            
+            //CODE BELOW IS ALSO WRONG BECAUSE THE INDEX CONTAINS A LINK AND THAT LINK WASN'T PUT IN AN IMAGE TAG
+            //document.write(images[number]);
+        }
+
+        //ALWAYS REMEMBER TO CALL THE FUCNTION:
+        imageFunction();
+
+    </script>
+
+  </body>
+</html>
