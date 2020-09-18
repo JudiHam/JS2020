@@ -1,0 +1,58 @@
+<HTML>
+  <style>
+  body {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    color: #333333;
+  }
+
+  div {
+      width: 200px;
+      height: 100px;
+      border: 1px solid black;
+  }
+  table, tr, td {
+    border: 1px solid gray;
+    width: 50%;
+  }
+  </style>
+
+  <script>
+    var count = 0;
+    function keyFunction() {
+      if(count<100){
+        count++;
+        //This next line of code prints the count into the span tag with the "keyCount" id. InnerText changes the content of an html element.
+        document.getElementById("keyCount").innerText = count;
+      }
+    }
+
+    function buttonFunction() {
+      if(document.getElementById("textdata").value == "") {
+        alert("The form is empty!");
+      }
+      else {
+        alert("Thank you for submitting the form!");
+      }
+    }
+
+  </script>
+
+  <h2>Exercise 3</h2>
+  <p>Below you will see a simple form.</p>
+  <ul>
+    <li>Add onfocus -event to the&nbsp;textarea below. When the user enters the textarea, it should show a text saying: "Please fill in the form with proper data.". You can try 
+  modifying the background color of the box as well. &nbsp;
+  </li>
+    <li>Try to use onkeydown -event on the textarea. It should calculate the number of keypresses and output them on the screen. Could you think other smart ways to use it?
+  </li>
+    <li>When the form button is clicked, check if the textarea is empty. Notify the user with appropriate message. HINT: You can access the Textarea using the following 
+  command:   <i>document.getElementById("textdata").value</i>. </li>
+  </ul>
+  <form>
+    <textarea id="textdata" maxlength="100"
+      onFocus="placeholder='Please fill in the form with proper data.'; style='background-color:#ffeee8'";
+      onKeyDown="keyFunction()"></textarea><br>
+    <p><span id="keyCount">0</span> out of 100 characters used.</p>
+    <button onclick="buttonFunction()">Send me</button>
+  </form>
+</html>
