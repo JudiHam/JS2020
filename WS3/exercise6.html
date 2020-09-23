@@ -1,0 +1,62 @@
+<HTML>
+<style>
+body {
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	color: #333333;
+}
+
+div {
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+}
+table, tr, td{
+  border: 1px solid gray;
+  width: 50%;
+}
+
+</style>
+
+
+<h2>Exercise 6</h2>
+
+<p id="demo"></p>
+
+<button onclick="getlocation()">Get location</button> 
+<button onclick="mapFunction()">Show location</button> 
+
+
+<li>The first button should check <a href="https://www.w3schools.com/html/html5_geolocation.asp">Geolocation</a> of the user, and output it to the console and to the 
+page. Note: Some browsers might not allow you to do this. Try different browsers if you get errors.</li>
+<li>
+The second button should show your location on a Google Maps. You can see the map with a spesific location using the URL 
+"https://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false" where latlon is your latitude + longitute data separated by 
+comma (,).
+</li>
+
+<script>
+  var x = document.getElementById("demo");
+
+  //write function to get location, if not supported dislpays message
+  function getlocation(){
+    if (navigator.geolocation){ 
+      //if the browser supports geolocation, get geolocation and display it according to the showPosition function
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
+
+  function showPosition(position){
+  //displays the position in the console and p tag of the page
+    console.log("Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);
+    x.innerHTML = "Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude;
+  }
+
+  var latlon = position.coords.latitude + "," + position.coords.longitude;
+  
+  function mapFunction() {
+    window.location.href = "https://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=14&size=400x300&sensor=false";
+  }
+</script>
+</html>
