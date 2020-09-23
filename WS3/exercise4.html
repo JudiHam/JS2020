@@ -1,0 +1,267 @@
+<HTML>
+  
+    <style>
+      body {
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
+        color: #333333;
+      }
+  
+      div {
+        width: 200px;
+        height: 100px;
+        border: 1px solid black;
+      }
+      table, tr, td {
+        border: 1px solid black;
+        width: 70%;
+      }
+    </style>
+
+    <script>
+        //Button1 date variable
+        var date = new Date();
+        
+        //Button2 function 
+        function showTable() {
+        var htmlTable = `
+        <style>
+        table, tr, td, th {
+            border: 1px solid gray;
+            border-collapse: collapse;
+            width: 50%;
+            }
+            td {
+                padding: 0 5px;
+            }
+            </style>
+            <table>
+            <tr>
+                <th>Class Name</th>
+                <th>Class Code</th>
+                <th>Teacher's Name</th>
+            </tr>
+            <tr>
+                <td>JavaScript</td>
+                <td>TO00BL10-3006</td>
+                <td>Mika Stenberg</td>
+            </tr>
+            <tr>
+                <td>Digitaalisen palvelun mallinnus</td>
+                <td>R0328-3004</td>
+                <td>Petri Säilynoja</td>
+            </tr>
+            <tr>
+                <td>Johtaminen ja esimiestyöskentely</td>
+                <td>R0052-3006</td>
+                <td>Seppo Koponen</td>
+            </tr>
+            </table>
+        `;
+        document.write(htmlTable);
+        }
+
+        //Button 3 function
+        function printTable() {
+            var persons = ["Nyssa P. Skinner", "593-4241 Lacus, St.","Cape Verde", 
+            "Camilla F. Strickland","391-2150 Ac Rd.","Andorra",
+            "Reagan U. Andrews", "P.O. Box 472, 2271 Mauris Ave","Faroe Islands",
+            "Kelsey D. Clark", "P.O. Box 866, 7793 Aliquet Ave","Bulgaria"
+            ];
+            document.write(
+            "<table style='border: 1px solid black; border-collapse: collapse;'>" + 
+                "<tr>" + 
+                "<th style='border: 1px solid black;'>" + "Name" + "</th>" +
+                "<th style='border: 1px solid black;'>" + "Address" + "</th>" +
+                "<th style='border: 1px solid black;'>" + "Country" + "</th>" +
+                "</tr>");
+            i=0;
+            while(i<persons.length) {
+            if(i%3==0) {
+                document.write("<tr style='border: 1px solid black'>");
+            }
+            document.write("<td style='border: 1px solid black; padding: 5px;'>" + persons[i] + "</td>");
+            if(i==2 || i==5 || i==8 || i==11){
+                document.write("</tr>");
+            }
+            i++;
+            }
+            document.write("</table>");
+        }
+
+        
+        </script>
+  
+    <h2>Exercise 1</h2>
+    <p>&nbsp;Below you will see three buttons. Edit the source code and add an onClick-events to these buttons.</p>
+    <p>
+      <button id="button1">Button 1</button>
+      <button id="button2">Button 2</button>
+      <button id="button3">Button 3</button>
+    </p>
+  
+    <ul>
+      <li>Button 1 should open an alert-button, which will say "You clicked me!" </li>
+      <li> When you see the button working, add the current date after the text by using the Date() -function. HINT. You can get spesific parts of the date by first creating a date 
+      object var pvm = new Date(). And then calling for methods such as pvm.getDate() and pvm.getHours() etc. See <a 
+    href="https://www.w3schools.com/js/js_date_methods.asp" /> this for details.</a>
+      </li>
+      <li>Button 2 should call a function called showTable()". ShowTable function should output a simple HTML-table (below) to the page. Use document.write to print data. Feel 
+      free to modify the data on the table. </li>
+      HINT. You can print multiple lines using backticks:
+    <xmp>
+    var html = `
+      <h1>
+        <b>Some HTML here</b>
+      </h1>
+    `;
+    </xmp>
+  
+    <br>
+  
+    <table id="example" class="display" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tfoot>
+            </tfoot>
+            <tbody>
+                <tr>
+                    <td>Tiger Nixon</td>
+                    <td>System Architect</td>
+                    <td>$320,800</td>
+                </tr>
+                <tr>
+                    <td>Garrett Winters</td>
+                    <td>Accountant</td>
+                    <td>$170,750</td>
+                </tr>
+                <tr>
+                    <td>Ashton Cox</td>
+                    <td>Junior Technical Author</td>
+                    <td>$86,000</td>
+                </tr>
+                <tr>
+                    <td>Cedric Kelly</td>
+                    <td>Senior Javascript Developer</td>
+                    <td>$433,060</td>
+                </tr>
+                <tr>
+                    <td>Airi Satou</td>
+                    <td>Accountant</td>
+                    <td>$162,700</td>
+                </tr>
+  
+            </tbody>
+        </table>
+        <br>
+  
+      <li>Button 3 should print out an HTML table (Name, Addrees, Country) using data from the following JavaScript array. HINT: Use looping to go through the array and print 
+    the data surrounded by HTML-tags to create the table.  </li>
+    <xmp>
+    var persons = ["Nyssa P. Skinner", "593-4241 Lacus, St.","Cape Verde", 
+            "Camilla F. Strickland","391-2150 Ac Rd.","Andorra",
+            "Reagan U. Andrews", "P.O. Box 472, 2271 Mauris Ave","Faroe Islands",
+            "Kelsey D. Clark", "P.O. Box 866, 7793 Aliquet Ave","Bulgaria"
+    ];
+  
+    </xmp>
+    </ul>
+
+    <h2 id="exercise2">Exercise 2</h2>
+
+    <ul>
+    <li>Add an&nbsp;onMouseOver event on the&nbsp;Heading "Exercise 2" of this page.&nbsp;It should&nbsp;fire when the users mouse is moved
+    over&nbsp;it. Output "Stepped over my a mouse!" on the console.</li>
+    <li>Add another event, which will fire then the mouse leaves the Exercise 2 -heading. This time show an alert window to the user saying: "Bye bye mouse!"</li>
+    </ul>
+
+    <h2>Exercise 3</h2>
+  <p>Below you will see a simple form.</p>
+  <ul>
+    <li>Add onfocus -event to the&nbsp;textarea below. When the user enters the textarea, it should show a text saying: "Please fill in the form with proper data.". You can try 
+  modifying the background color of the box as well. &nbsp;
+  </li>
+    <li>Try to use onkeydown -event on the textarea. It should calculate the number of keypresses and output them on the screen. Could you think other smart ways to use it?
+  </li>
+    <li>When the form button is clicked, check if the textarea is empty. Notify the user with appropriate message. HINT: You can access the Textarea using the following 
+  command:   <i>document.getElementById("textdata").value</i>. </li>
+  </ul>
+  <form>
+    <textarea id="textdata" maxlength="100"; style='background-color:#ffeee8'></textarea><br>
+    <p><span id="keyCount">0</span> out of 100 characters used.</p>
+    <button id="sendButton">Send me</button>
+  </form>
+
+        <script>
+          //EXERCISE 1
+          //function for button 1
+          function b1Alert () {
+              alert('You clicked me!\nToday\'s date is: ' + date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + '.');
+          }
+
+          //Event listener for button 1
+          var b1 = document.getElementById("button1");
+          b1.addEventListener("click", b1Alert);
+
+          //Event listener for button 2
+          var b2 = document.getElementById("button2");
+          b2.addEventListener("click", showTable);
+
+          //Event listener for button 3
+          var b3 = document.getElementById("button3");
+          b3.addEventListener("click", printTable);
+
+          //EXERCISE 2
+          //Functions for exercise 2
+          function consoleFunction() {
+            console.log('Stepped over by a mouse!')
+          }
+
+          function alertFunction() {
+            alert('Bye bye mouse!')
+          }
+          
+          //Event listeners for exercise 2 heading
+          var ex2 = document.getElementById("exercise2");
+          ex2.addEventListener("mouseover", consoleFunction);
+          ex2.addEventListener("mouseout", alertFunction);
+
+          //EXERCISE 3
+          //functions for exercise 3
+          function phFunction(){
+            document.getElementById("textdata").placeholder = "Please fill in the form with proper data.";
+          }
+
+          var count = 0;
+          function keyFunction() {
+            if(count<100){
+              count++;
+              //This next line of code prints the count into the span tag with the "keyCount" id. InnerText changes the content of an html element.
+              document.getElementById("keyCount").innerText = count;
+            }
+          }
+
+          function buttonFunction() {
+            if(document.getElementById("textdata").value == "") {
+              alert("The form is empty!");
+            }
+            else {
+              alert("Thank you for submitting the form!");
+            }
+          }
+
+          //Event listeners for exercise 3
+          var ta = document.getElementById("textdata");
+          ta.addEventListener("focus", phFunction);
+          ta.addEventListener("keydown", keyFunction);          
+          
+          var sendB = document.getElementById("sendButton");
+          sendB.addEventListener("click", buttonFunction);
+
+      </script>
+  </html>
+  

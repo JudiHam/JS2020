@@ -25,9 +25,13 @@
     function showTable() {
       var htmlTable = `
         <style>
-          table, tr, td {
+          table, tr, td, th {
             border: 1px solid gray;
-            width: 70%;
+            border-collapse: collapse;
+            width: 50%;
+          }
+          td {
+            padding: 0 5px;
           }
         </style>
         <table>
