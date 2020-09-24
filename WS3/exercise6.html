@@ -35,9 +35,14 @@ comma (,).
 </li>
 
 <script>
+  //PART 1 OF THE EXERCISE
   var x = document.getElementById("demo");
 
-  //write function to get location, if not supported dislpays message
+  //declare latlon variable and call setLatLon function
+  var latlon;
+  setLatLon();
+
+  //GET LOCATION BUTTON
   function getlocation(){
     if (navigator.geolocation){ 
       //if the browser supports geolocation, get geolocation and display it according to the showPosition function
@@ -52,11 +57,25 @@ comma (,).
     console.log("Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);
     x.innerHTML = "Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude;
   }
+  
+  //SHOW LOCATION BUTTON
+  //needs the same function again in case the get location button isn't pressed before the show location button
+  function setLatLon() {
+    if (navigator.geolocation){ 
+      //if the browser supports geolocation, get geolocation and display it according to the showPosition function
+      navigator.geolocation.getCurrentPosition(setPosition);
+    } else {
+      x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
 
-  var latlon = position.coords.latitude + "," + position.coords.longitude;
+  function setPosition(position){
+    latlon = position.coords.latitude + "," + position.coords.longitude;
+  }
   
   function mapFunction() {
-    window.location.href = "https://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=14&size=400x300&sensor=false";
+    var newURL = "https://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=14&size=400x300&sensor=false";
+    window.location.href = newURL;
   }
 </script>
 </html>
