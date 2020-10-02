@@ -62,7 +62,7 @@
     }
 
       //Button 3 function
-      function printTable() {
+      function printTable1() {
         var persons = ["Nyssa P. Skinner", "593-4241 Lacus, St.","Cape Verde", 
           "Camilla F. Strickland","391-2150 Ac Rd.","Andorra",
           "Reagan U. Andrews", "P.O. Box 472, 2271 Mauris Ave","Faroe Islands",
@@ -90,8 +90,22 @@
           }
 
         document.write("</table>");
-        
         }
+
+    //Cleaner method by teacher:
+    function printTable2() {
+      var persons = ["Nyssa P. Skinner", "593-4241 Lacus, St.","Cape Verde", 
+          "Camilla F. Strickland","391-2150 Ac Rd.","Andorra",
+          "Reagan U. Andrews", "P.O. Box 472, 2271 Mauris Ave","Faroe Islands",
+          "Kelsey D. Clark", "P.O. Box 866, 7793 Aliquet Ave","Bulgaria"
+        ];
+
+      document.write("<table border='1'>");
+
+      for (var i=0; i< persons.length; i+=3) {
+        document.write("<tr><td>" + persons[i] + "</td><td>" + persons [i+1] + "</td><td>" + persons[i+2] + "</td></tr>");
+      }
+    }
       
   </script>
 
@@ -102,7 +116,7 @@
   <p>
     <button onclick="alert('You clicked me!\nToday\'s date is: ' + date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear() + '.')">Button 1</button>
     <button onclick="showTable()">Button 2</button>
-    <button onclick="printTable()">Button 3</button>
+    <button onclick="printTable1()">Button 3</button>
   </p>
 
   <ul>
