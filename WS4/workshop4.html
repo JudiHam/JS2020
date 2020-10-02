@@ -23,7 +23,6 @@ img {
     
 <script>
     //Exercise 1
-
     function button1() {
         document.getElementsByTagName('h1')[0].innerHTML = 'Modified heading!';
     }
@@ -45,7 +44,6 @@ img {
     }
   
     //Exercise 2
-
     function hide() {
         document.getElementById('data').style.display = "none";
     }
@@ -64,7 +62,29 @@ img {
     }
     
     //Exercise 3
+    function pullDownFunction(selTag) {
+      var selected = selTag.options[selTag.selectedIndex];
+      alert(selected.text);
+      if (selected == 0) {
+        imgSrc = "https://www.bmw.fi/content/dam/bmw/marketNORDICS/common/All-models/bmw-5-serie/THE5_G30_G31_startpage_2020_1680x756.jpg/_jcr_content/renditions/cq5dam.resized.img.980.medium.time1600422201769.jpg";
+      } if (selected == 1) {
+        imgSrc = "https://www.audi.fi/content/dam/nemo/models/a4/a4-limousine/my-2020/1920-stage/1920x1080_AA4_L_191004.jpg?output-format=webp&downsize=767px:*";
+      } if (selected == 2) {
+        imgSrc = "https://s1.cdn.autoevolution.com/images/news/gallery/this-production-spec-mercedes-benz-eqs-will-steal-the-luxury-ev-show_1.jpg";
+      } if (selected == 3) {
+        imgSrc = "https://www.volvocars.com/images/v/fi/v/-/media/project/contentplatform/data/media/pdp/v90-hybrid/v90-recharge-gallery-1-16x9.jpg?h=500&iar=0";
+      }
+    }
 
+    function imgBorderDisplay() {
+      document.getElementById("carimage").style.border = "thick solid #9ae9d3";
+    }
+
+    function imgBorderHide() {
+      document.getElementById("carimage").style.borderStyle = "none";
+    }
+
+    
     
 </script>
 
@@ -117,7 +137,7 @@ img {
 <li>When the mouse is moved on top of the image, a colored border should appear surrounding it. On mouse out, border should disappear</li>
 <li>When you have accomplished the above, change the image (id=&quot;carimage&quot;) below based on the users choice on the pulldown menu below. Find appropriate images from the web.
   <p>Select a new car from the list.</p>
-  <select name="mySelect" id="mySelect" onchange="">
+  <select name="mySelect" id="mySelect" onchange="pullDownFunction(this)">
     <option value="BMW">BMW         
     <option value="Audi">Audi
     <option value="Mercedes">Mercedes
@@ -125,7 +145,8 @@ img {
   </select>
   <br>
   <br>
-<img onmouseover="" onmouseout="" style="left: 0px; opacity: 1;" src="http://cdn.bmwblog.com/wp-content/uploads/2015/11/BMW-2-Series-Gran-Coupe-Rendering.jpg" width="400" id="carimage"/></li>
+<img onmouseover="imgBorderDisplay()" onmouseout="imgBorderHide()" style="left: 0px; opacity: 1;" src="imgSrc" width="400" id="carimage"/></li>
+
 <h2>Exercise 4: Moving things around</h2>
 <ul>
   <li>
