@@ -1,4 +1,6 @@
-Option 1, doesn't work 
+First try 
+    -separate function for setting the car image 
+    - in the html select tag would be: onchange="imgFunction()"
 
 function imgFunction() {
     //set selected option's index to sel variable
@@ -14,9 +16,8 @@ function imgFunction() {
     }
   }
 
-  IN THE HTML SELECT TAG: onchange="imgFunction()"
-
-  Option 2, doesn't work
+Second try
+  - include image function in function with alert o selected option
     function pullDownFunction(selTag) {
       var selected = selTag.options[selTag.selectedIndex];
       alert(selected.text);

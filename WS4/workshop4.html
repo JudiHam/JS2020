@@ -65,15 +65,6 @@ img {
     function pullDownFunction(selTag) {
       var selected = selTag.options[selTag.selectedIndex];
       alert(selected.text);
-      if (selected == 0) {
-        imgSrc = "https://www.bmw.fi/content/dam/bmw/marketNORDICS/common/All-models/bmw-5-serie/THE5_G30_G31_startpage_2020_1680x756.jpg/_jcr_content/renditions/cq5dam.resized.img.980.medium.time1600422201769.jpg";
-      } if (selected == 1) {
-        imgSrc = "https://www.audi.fi/content/dam/nemo/models/a4/a4-limousine/my-2020/1920-stage/1920x1080_AA4_L_191004.jpg?output-format=webp&downsize=767px:*";
-      } if (selected == 2) {
-        imgSrc = "https://s1.cdn.autoevolution.com/images/news/gallery/this-production-spec-mercedes-benz-eqs-will-steal-the-luxury-ev-show_1.jpg";
-      } if (selected == 3) {
-        imgSrc = "https://www.volvocars.com/images/v/fi/v/-/media/project/contentplatform/data/media/pdp/v90-hybrid/v90-recharge-gallery-1-16x9.jpg?h=500&iar=0";
-      }
     }
 
     function imgBorderDisplay() {
@@ -84,7 +75,18 @@ img {
       document.getElementById("carimage").style.borderStyle = "none";
     }
 
-    
+    function changeImage(opti) {
+      //image part
+      if (opti.value == "BMW") {
+        document.getElementById("carimage").src = "https://www.bmw.fi/content/dam/bmw/marketNORDICS/common/All-models/bmw-5-serie/THE5_G30_G31_startpage_2020_1680x756.jpg/_jcr_content/renditions/cq5dam.resized.img.980.medium.time1600422201769.jpg";
+      } if (opti.value == "Audi") {
+        document.getElementById("carimage").src = "https://www.audi.fi/content/dam/nemo/models/a4/a4-limousine/my-2020/1920-stage/1920x1080_AA4_L_191004.jpg?output-format=webp&downsize=767px:*";
+      } if (opti.value == "Mercedes") {
+        document.getElementById("carimage").src = "https://s1.cdn.autoevolution.com/images/news/gallery/this-production-spec-mercedes-benz-eqs-will-steal-the-luxury-ev-show_1.jpg";
+      } if (opti.value == "Volvo") {
+        document.getElementById("carimage").src = "https://www.volvocars.com/images/v/fi/v/-/media/project/contentplatform/data/media/pdp/v90-hybrid/v90-recharge-gallery-1-16x9.jpg?h=500&iar=0";
+      }
+    }
     
 </script>
 
@@ -137,7 +139,7 @@ img {
 <li>When the mouse is moved on top of the image, a colored border should appear surrounding it. On mouse out, border should disappear</li>
 <li>When you have accomplished the above, change the image (id=&quot;carimage&quot;) below based on the users choice on the pulldown menu below. Find appropriate images from the web.
   <p>Select a new car from the list.</p>
-  <select name="mySelect" id="mySelect" onchange="pullDownFunction(this)">
+  <select name="mySelect" id="mySelect" onchange="pullDownFunction(this)" onchange="changeImage(this)">
     <option value="BMW">BMW         
     <option value="Audi">Audi
     <option value="Mercedes">Mercedes
@@ -145,7 +147,7 @@ img {
   </select>
   <br>
   <br>
-<img onmouseover="imgBorderDisplay()" onmouseout="imgBorderHide()" style="left: 0px; opacity: 1;" src="imgSrc" width="400" id="carimage"/></li>
+<img onmouseover="imgBorderDisplay()" onmouseout="imgBorderHide()" style="left: 0px; opacity: 1;" src="//:0" width="400" id="carimage"/></li>
 
 <h2>Exercise 4: Moving things around</h2>
 <ul>
