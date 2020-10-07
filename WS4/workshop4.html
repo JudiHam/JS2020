@@ -63,8 +63,27 @@ img {
     
     //Exercise 3
     function pullDownFunction(selTag) {
+      //alert selected option
       var selected = selTag.options[selTag.selectedIndex];
       alert(selected.text);
+
+      //display image of selected option
+      //BMW
+      if (selTag.selectedIndex == 0) {
+        document.getElementById("carimage").src = "https://www.bmw.fi/content/dam/bmw/marketNORDICS/common/All-models/bmw-5-serie/THE5_G30_G31_startpage_2020_1680x756.jpg/_jcr_content/renditions/cq5dam.resized.img.980.medium.time1600422201769.jpg";
+      } 
+      //Audi
+      if (selTag.selectedIndex == 1) {
+        document.getElementById("carimage").src = "https://www.audi.fi/content/dam/nemo/models/a4/a4-limousine/my-2020/1920-stage/1920x1080_AA4_L_191004.jpg?output-format=webp&downsize=767px:*";
+      }
+      //Mercedes
+      if (selTag.selectedIndex == 2) {
+        document.getElementById("carimage").src = "https://s1.cdn.autoevolution.com/images/news/gallery/this-production-spec-mercedes-benz-eqs-will-steal-the-luxury-ev-show_1.jpg";
+      }
+      //Volvo
+      if (selTag.selectedIndex == 3) {
+        document.getElementById("carimage").src = "https://www.volvocars.com/images/v/fi/v/-/media/project/contentplatform/data/media/pdp/v90-hybrid/v90-recharge-gallery-1-16x9.jpg?h=500&iar=0";
+      }
     }
 
     function imgBorderDisplay() {
@@ -75,19 +94,6 @@ img {
       document.getElementById("carimage").style.borderStyle = "none";
     }
 
-    function changeImage(opti) {
-      //image part
-      if (opti.value == "BMW") {
-        document.getElementById("carimage").src = "https://www.bmw.fi/content/dam/bmw/marketNORDICS/common/All-models/bmw-5-serie/THE5_G30_G31_startpage_2020_1680x756.jpg/_jcr_content/renditions/cq5dam.resized.img.980.medium.time1600422201769.jpg";
-      } if (opti.value == "Audi") {
-        document.getElementById("carimage").src = "https://www.audi.fi/content/dam/nemo/models/a4/a4-limousine/my-2020/1920-stage/1920x1080_AA4_L_191004.jpg?output-format=webp&downsize=767px:*";
-      } if (opti.value == "Mercedes") {
-        document.getElementById("carimage").src = "https://s1.cdn.autoevolution.com/images/news/gallery/this-production-spec-mercedes-benz-eqs-will-steal-the-luxury-ev-show_1.jpg";
-      } if (opti.value == "Volvo") {
-        document.getElementById("carimage").src = "https://www.volvocars.com/images/v/fi/v/-/media/project/contentplatform/data/media/pdp/v90-hybrid/v90-recharge-gallery-1-16x9.jpg?h=500&iar=0";
-      }
-    }
-    
 </script>
 
 <h1>Workshop 4: DOM Scripting</h1>
@@ -147,7 +153,7 @@ img {
   </select>
   <br>
   <br>
-<img onmouseover="imgBorderDisplay()" onmouseout="imgBorderHide()" style="left: 0px; opacity: 1;" src="//:0" width="400" id="carimage"/></li>
+<img id="carimage" onmouseover="imgBorderDisplay()" onmouseout="imgBorderHide()" style="left: 0px; opacity: 1;" src=" " width="400"/></li>
 
 <h2>Exercise 4: Moving things around</h2>
 <ul>
