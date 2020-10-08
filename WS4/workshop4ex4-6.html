@@ -62,6 +62,7 @@ img {
       var image = document.getElementById("carimage");
       image.remove();
     }
+
     
 </script>
 
@@ -148,6 +149,59 @@ Salary:
     <p dir="ltr">Write a loop, which goes through all the LI tags in the page and replaces them with a &lt;strong&gt; tagged, red text saying &quot;Replaced&quot;.</p>
   </li>
   <li dir="ltr">How would you replace the contents only on the ones with the word &lsquo;Select&rsquo; in them?</li></ul>
+
+<script>
+  //Exercise 5
+  //Write a JavaScript function to add rows to the table
+  function tF() {
+    //find the table by its id
+    var table = document.getElementById("data");
+    //add rows, <tr> element in html
+    var row6 = table.insertRow(6);
+    var row7 = table.insertRow(7);
+    //add row cells to row 6 and 7, cell61 is cell 1 of row 6 etc. Row cells are <td> elements in HTML.
+    var cell61 = row6.insertCell(0);
+    var cell62 = row6.insertCell(1);
+    var cell63 = row6.insertCell(2);
+    //row 7 
+    var cell71 = row7.insertCell(0);
+    var cell72 = row7.insertCell(1);
+    var cell73 = row7.insertCell(2);
+    //add data to cells 
+    cell61.innerHTML = "Mary Poppins";
+    cell62.innerHTML = "Babysitter";
+    cell63.innerHTML = "$945";
+    cell71.innerHTML = "Bradley Cooper";
+    cell72.innerHTML = "Actor";
+    cell73.innerHTML = "$1,000,000";
+  }
+
+  tF();
+
+  //try reading the content to be added from a set of fields below the table
+  function insertRows() {
+    var table = document.getElementById("data");
+    nextrow = 8;
+    //insert new row to next free spot, line 8
+    var row = table.insertRow(nextrow);
+      //add first cell to row 8
+      var nextcell = row.insertCell(0);
+        //add name input from textfield to nextcell: cell 0 on row 8
+        var name = document.getElementById("textfield").value;
+        nextcell.innerHTML = name;
+      //add second cell to row 8
+      nextcell = row.insertCell(1)
+        //add position input from textfield to nextcell: cell 1 on row 8
+        var position = document.getElementById("textfield2").value;
+        nextcell.innerHTML = position;
+      nextcell = row.insertCell(2);
+        var salary = document.getElementById("textfield3").value;
+        nextcell.innerHTML = salary;
+  nextrow++;
+  }
+
+//Why does it add the next rows in between the last original and first new row?
+  </script>
 </html>
 
 
