@@ -6,27 +6,71 @@ body {
 }
 
 div {
-    width: 200px;
-    height: 100px;
+    width: 1000px;
+    height: 1000px;
     border: 1px solid black;
+    position: relative;
 }
 table, tr, td{
   border: 1px solid gray;
   width: 50%;
 }
 img {
-    position: relative;
-    left:0px;
+    position: absolute;
 }
 
 </style>
 
 <script>
+    //move button
+    function changePosition() {
+        document.getElementById("carimage").style.right = "200px";
+        document.getElementById("carimage").style.top = "500px";
+    }
+    
+    //Write a funtion doMove() which will move the image across the screen
+    function doMove() {
+        var image = document.getElementById("carimage");
+        var pos = 0;
+        var id = setInterval(frame, 5);
+        function frame() {
+            if (pos == 600) {
+                clearInterval(id);
+            } else {
+                pos++;
+                image.style.left = pos + "px";
+            }
+        }
+    }
 
+    //fade out button
+    function fadeOut() {
+      var image = document.getElementById("carimage");
+        var opa = 1;
+        var id = setInterval(frame, 5);
+        function frame() {
+            if (opa == 0) {
+              clearInterval(id);
+            } else {
+              image.style.opacity = opa = opa - 0.1;
+            }
+        }
+    }
+
+    //dissapear button
+    function hide() {
+      var image = document.getElementById("carimage");
+      image.remove();
+    }
+    
 </script>
 
 <h1>Workshop 4: DOM Scripting</h1>
-<img id="carimage" style="left: 0px; opacity: 1;" src="https://tipsmake.com/data/images/20-super-cool-hd-car-wallpapers-picture-1-m1j2NUxJw.jpg" width="400"/></li>
+
+<div>
+<img id="carimage" style="left: 0px; opacity: 1;" src="https://tipsmake.com/data/images/20-super-cool-hd-car-wallpapers-picture-1-m1j2NUxJw.jpg" width="400"/>
+</div>
+
 <h2>Exercise 4: Moving things around</h2>
 <ul>
   <li>
