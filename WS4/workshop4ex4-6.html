@@ -15,32 +15,15 @@ table, tr, td{
   border: 1px solid gray;
   width: 50%;
 }
-img {
-    position: absolute;
-}
 
 </style>
 
 <script>
     //move button
     function changePosition() {
+        document.getElementById("carimage").style.position = "relative";
         document.getElementById("carimage").style.right = "200px";
         document.getElementById("carimage").style.top = "500px";
-    }
-    
-    //Write a funtion doMove() which will move the image across the screen
-    function doMove() {
-        var image = document.getElementById("carimage");
-        var pos = 0;
-        var id = setInterval(frame, 5);
-        function frame() {
-            if (pos == 600) {
-                clearInterval(id);
-            } else {
-                pos++;
-                image.style.left = pos + "px";
-            }
-        }
     }
 
     //fade out button

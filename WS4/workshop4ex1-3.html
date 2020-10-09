@@ -41,8 +41,14 @@ img {
         //attach to a desired place on the page
         var place = document.getElementsByTagName('p');
         place[3].appendChild(par);
+        //italic font
+        document.getElementsByTagName('p')[3].style.fontStyle = 'italic';
         //change background color of the whole page
         document.body.style.backgroundColor = "#ff944d";
+        //add logo image after text
+        var logo = document.createElement('img');
+        logo.src = 'https://www.freepnglogos.com/uploads/javascript-png/javascript-logo-transparent-logo-javascript-images-3.png';
+        par.appendChild(logo);
     }
   
     //Exercise 2
