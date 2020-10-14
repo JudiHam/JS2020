@@ -5,21 +5,25 @@
 // Function performs the calculation and returns false.
 function calculate() {
 	'use strict';
-	
+	//Modify the code to store the quantity as an integer
+	//and the price, tax and discount as floats. 
+
 	// For storing the order total:
 	var total;
-    
+	
     // Get references to the form values:
     var quantity = parseInt(document.getElementById('quantity').value);
+        
     var price = parseFloat(document.getElementById('price').value);
     var tax = parseFloat(document.getElementById('tax').value);
 	var discount = parseFloat(document.getElementById('discount').value);
-	var shipping = parseFloat(document.getElementById('shipping').value);
+
+	var shipping;
     
 	// Add validation here later!
 	
 	// Calculate the initial total:
-	total = (quantity * price);
+	total = quantity * price;
 	console.log("total before tax: " + total);
 	
 	// Make the tax rate easier to use:
@@ -32,17 +36,21 @@ function calculate() {
 		
 	// Factor in the discount:
 	if (quantity > 100) {
-		discount = (discount * 2);
+		document.getElementById("discount").value = discount * 2;
 	}
-	console.log("discount: " + discount);
 
-	if (quantity > 100) {
-		document.getElementById('shipping').value = 0;
-		
-	}
-	console.log("shipping: " + shipping);
-	total = total - discount + shipping;
+	total = total - discount;
 	console.log("total after discount: " + total);
+
+	if (total > 100) {
+		shipping = 0;
+		document.getElementById("shipping").value = 0;
+	} else {
+		shipping = 10;
+		document.getElementById("shipping").value = shipping;
+	}
+
+	total = total + shipping;
 
 	// Format the total to two decimal places:
 	total = total.toFixed(2);
