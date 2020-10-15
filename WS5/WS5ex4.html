@@ -1,0 +1,125 @@
+<HTML>
+<style>
+body {
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	color: #333333;
+}
+
+div {
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+}
+table, tr, td{
+  border: 1px solid gray;
+  width: 50%;
+}
+
+</style>
+<script>
+    function getData() {
+    var success = true;
+    var email = document.forms[0].email.value;
+    var comment = document.forms[0].comment.value;
+    //Check if the email field includes "@", show feedback otherwise 
+    //Check that the email input length is at least 6 and less than 15 
+    //and return false so that the form isn't submitted
+    var pos = email.search("@");
+    if (pos == -1 || (email.length < 6 || email.length >= 15)) {
+      document.getElementById("feedback").innerHTML = "<b>*Please fill in a valid email address.</b>";
+      document.getElementById("emailfield").style.borderColor = "#ff4d4d";
+      success = false;
+    } 
+    //Check that the comment input is max 50 characters long and not empty
+    //return false if either of these don't apply so that the form isn't submitted
+    if (comment.length > 50 || comment.length == 0) {
+      document.getElementById("feedback2").innerHTML = "<b>*Please fill in a comment of 1-50 characters.</b>";
+      document.getElementById("commentfield").style.borderColor = "#ff4d4d";
+      success = false;
+    }
+    //Check that there is data if the checkbox was checked and the form is submitted
+    var phone = document.getElementById("phone");
+    var pf = document.getElementById("phonefield");
+    if (phone.checked == true && pf.length < 7) {
+        document.getElementById("feedback3").innerHTML = ""
+        success = false;
+    }
+    return success;
+    }
+
+    function showPhoneField() {
+    document.getElementById("phonefield").style.display = "block";
+    }
+
+    function showTxtField() {
+        document.getElementById("textfield").style.display = "block";
+    }
+
+    function showEmailField() {
+        document.getElementById("emfield").style.display = "block";
+    }
+
+</script>
+
+<h1>Workshop 5: Smart Forms</h1>
+<hr />
+<p>In this exercise we will practice the art of DOM Scripting with JavaScript. Use the 
+lecture-material as a reference guide side by side these exercises. It might also be a 
+good idea to save the lines of code you write during the exercises for later use. </p>
+
+<h2>Exercise 4: Hidden Extra fields</h2>
+<ul>
+<li>In PowerPoint-slides you were   shown a demo of a form where some extra fields 
+were hidden and they   turned visible after certain events occurred.
+    <p data-line="41">Copy the the contact form   created in Exercise 1 and edit it. Add 
+select boxes to the form where user   can choose a preferred way of contact. There 
+should be atleast email and   phone and sms available. </p>
+    <p data-line="41">After choosing the box, the user is shown an   input field which 
+asks detailed information regarding on the selected   contact method.</p>
+  </li>
+</ul>
+
+<form onsubmit="return getData()">
+    Email address:<br>
+    <input id="emailfield" type="text" name="email">
+    <span id="feedback"></span> 
+    <br><br>
+
+    Comment:<br>
+    <textarea id="commentfield" name="comment"></textarea>
+    <span id="feedback2"></span>
+    <br><br>
+    
+    I want to be contacted through:<br><br>
+
+    <input type="checkbox" id="phone" onClick="showPhoneField()">
+    <label for="phone">Phone call</label>
+    <br>
+    <input type="text" id="phonefield" placeholder="phone number">
+    <br>
+
+    <input type="checkbox" id="txt" onClick="showTxtField()">
+    <label for="txt">Text message</label>
+    <br>
+    <input type="text" id="textfield" placeholder="phone number">
+    <br>
+
+    <input type="checkbox" id="em" onClick="showEmailField()">
+    <label for="em">Email</label>
+    <br>
+    <input type="text" id="emfield" placeholder="email address">
+    <br><br>
+
+    <input type="submit" value="Send">
+</form>
+</p>
+
+<script>//Hide extra fields by default
+    document.getElementById("phonefield").style.display = "none";
+    document.getElementById("textfield").style.display = "none";
+    document.getElementById("emfield").style.display = "none";
+</script>
+
+</html>
+
+
