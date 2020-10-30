@@ -44,23 +44,23 @@ modify this data using the developer tools.</p>
   <label>
     <br>
     <input type="checkbox" name="CheckboxGroup1" value="Internet" 
-id="CheckboxGroup1_0">
+id="CheckboxGroup1_0" class="checkboxes">
   Internet</label>
   <br>
   <label>
-    <input type="checkbox" name="CheckboxGroup1" value="AC" id="CheckboxGroup1_1">
+    <input type="checkbox" name="CheckboxGroup1" value="AC" id="CheckboxGroup1_1" class="checkboxes">
     Air Conditioning</label>
   <br>
   <label>
-    <input type="checkbox" name="CheckboxGroup1" value="minibar" id="CheckboxGroup1_2">
+    <input type="checkbox" name="CheckboxGroup1" value="minibar" id="CheckboxGroup1_2" class="checkboxes">
     Minibar</label>
   <br>
   <label>
-    <input type="checkbox" name="CheckboxGroup1" value="car" id="CheckboxGroup1_3">
+    <input type="checkbox" name="CheckboxGroup1" value="car" id="CheckboxGroup1_3" class="checkboxes">
     Car rent</label>
   <br>
   <label>
-    <input type="checkbox" name="CheckboxGroup1" value="sauna" id="CheckboxGroup1_4">
+    <input type="checkbox" name="CheckboxGroup1" value="sauna" id="CheckboxGroup1_4" class="checkboxes">
     Sauna 
 </label>
 
@@ -94,15 +94,18 @@ restarts.</p>
         var arri = document.getElementById("arrival").value;
         localStorage.setItem("destination", desti);
         localStorage.setItem("arrival", arri);
-        var checkbxs = document.getElementsByName("CheckboxGroup1");
-        var i=0;
-        var servs = [];
-        while (i <= checkbxs.length) {
-            if (checkbxs[i].checked == true) {
-              servs.push(checkbxs[i]);
-              localStorage.setItem(services, servs);
-              i++;
-            }
+        //Get selected checkboxes
+        var checkbxs = document.getElementsByClassName("checkboxes");
+        var i = 0;
+        while (i <= document.getElementsByClassName("checkboxes").length) {
+          if (document.getElementsByClassName("checkboxes")[i].checked == true) {
+            console.log("Box " + [i] + " is checked.");
+            //can i set multiple items under the same key "services"?
+            //if not, how do i add them to a list that doesn't exist yet?
+            localStorage.setItem("services" + [i], document.getElementsByClassName("checkboxes")[i].value);
+            console.log("Service added!");
+          }
+        i++;
         }
     }
     </script>
