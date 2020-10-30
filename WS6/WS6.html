@@ -22,7 +22,7 @@ table, tr, td{
 <script>
 </script>
 <!-- exercise #2 -->
-<body onload="">
+<body onLoad="printData()">
 
 <h1>Workshop 6: Using Localstorage</h1>
 <hr />
@@ -89,7 +89,6 @@ select Application tab, then LocalStorage on the left).</p>
 example, would remember the data that you have entered between browser refresh and even 
 restarts.</p>
 <script>
-    function getData() {
         var desti = document.getElementById("destination").value;
         var arri = document.getElementById("arrival").value;
         localStorage.setItem("destination", desti);
@@ -97,6 +96,7 @@ restarts.</p>
         //Get selected checkboxes
         var checkbxs = document.getElementsByClassName("checkboxes");
         var i = 0;
+    function getData() {
         while (i <= document.getElementsByClassName("checkboxes").length) {
           if (document.getElementsByClassName("checkboxes")[i].checked == true) {
             console.log("Box " + [i] + " is checked.");
@@ -106,6 +106,25 @@ restarts.</p>
             console.log("Service added!");
           }
         i++;
+        }
+    }
+    function printData() {
+    // check if there is saved data available from the first assignment, 
+    // and load them into a div with an id="sessionData"
+    var storage = document.getElementById("sessiondata");
+    storage.innerHTML = "Destination: " + localStorage.getItem("destination") + "<br>"
+                      + "Arrival: " + localStorage.getItem("arrival") + "<br>"
+                      + "Services: ";
+    }
+    var s = 0;
+    function printServices() {
+      //While local storage has services ("services" + [s]) -> add ("services" + [s]) to storage div
+      while (s <= localStorage.length) {
+          if (localStorage.key(s).includes("services") == true) {
+            storage.innerHTML = storage.innerHTML + localStorage.getItem(key(s));
+            console.log("Service added to storage div!");
+        s++;
+          }
         }
     }
     </script>
