@@ -63,70 +63,129 @@ id="CheckboxGroup1_0" class="checkboxes">
     <input type="checkbox" name="CheckboxGroup1" value="sauna" id="CheckboxGroup1_4" class="checkboxes">
     Sauna 
 </label>
-
 </p>
 </div>	
 <p>
   <input type="button" name="button" id="button" value="Reserve" onClick="getData()">
 </p>
+
 <p><br>
 </p>
 <p>&nbsp;</p>
 <h2>Exercise 2: Reloading the saved data</h2>
 <p>After you have managed to save some data to a localstorage, its time to utilize it. Add a 
 piece of code to this page, which will check if there is saved data available from the first 
-assignment, and load them into a div with an id="sessionData". This should happen when the 
+assignment, and load them into a div with an id="localdata". This should happen when the 
 page is loaded, because we want the data to be loaded then as well. HINT: use onLoad -
 event on the body tag.</p>
-<div id="sessiondata">Session data goes here!</div>
+<div id="localdata">Session data goes here!</div>
 <h2>Exercise 3: Sessionstorage vs. localstorage</h2>
 <p>Compare sessionstorage and localstorage. Think of a few examples on where each 
-should be used. Copy the form above here and implement sessionstorage for it. See what 
+should be used. <br><br>
+Answer: Sessionstorage is useful for situations where you only want the data to be stored temporarily. It's a good 
+method for log in/user identification situations, where you want the log in data to be cleared after the session (safety purposes).
+One practical example is online bank log in sessions. Sessionstorage could also be useful for saving shopping cart contents, 
+but nowadays they're often saved more permanently and they're still there even ater the session ends and you open a new session later.</p>
+
+<p>Copy the form above here and implement sessionstorage for it. See what 
 happens, when you close the browser. You can utilize developer tools to study the data (F12, 
 select Application tab, then LocalStorage on the left).</p>
+<p>
+  <label for="textfield">Destination:</label>
+  <input type="text" name="textfield" id="destination2">
+  <br>
+  <label for="textfield">Arrival Date:</label>
+  <input type="text" name="textfield" id="arrival2">
+  <br>
+  <div id="services2">
+  Services:
+  <label>
+    <br>
+    <input type="checkbox" name="CheckboxGroup1" value="Internet" 
+id="CheckboxGroup1" class="checkboxes2">
+  Internet</label>
+  <br>
+  <label>
+    <input type="checkbox" name="CheckboxGroup1" value="AC" id="CheckboxGroup11" class="checkboxes2">
+    Air Conditioning</label>
+  <br>
+  <label>
+    <input type="checkbox" name="CheckboxGroup1" value="minibar" id="CheckboxGroup12" class="checkboxes2">
+    Minibar</label>
+  <br>
+  <label>
+    <input type="checkbox" name="CheckboxGroup1" value="car" id="CheckboxGroup13" class="checkboxes2">
+    Car rent</label>
+  <br>
+  <label>
+    <input type="checkbox" name="CheckboxGroup1" value="sauna" id="CheckboxGroup14" class="checkboxes2">
+    Sauna 
+</label>
+</p>
+</div>	
+<p>
+  <input type="button" name="button" id="button2" value="Reserve" onClick="sessionData()">
+</p>
 <h2>Exercise 4:</h2>
 <p>Try to add localstorage features to your project work. This means, that todo-list for 
 example, would remember the data that you have entered between browser refresh and even 
 restarts.</p>
 <script>
-        var desti = document.getElementById("destination").value;
-        var arri = document.getElementById("arrival").value;
-        localStorage.setItem("destination", desti);
-        localStorage.setItem("arrival", arri);
-        //Get selected checkboxes
-        var i = 0;
-    function getData() {
-        while (i <= document.getElementsByClassName("checkboxes").length) {
-          if (document.getElementsByClassName("checkboxes")[i].checked == true) {
-            console.log("Box " + [i] + " is checked.");
-            localStorage.setItem("services" + [i], document.getElementsByClassName("checkboxes")[i].value);
-            console.log("Service added!");
-          }
-        i++;
-        }
+  //get variables for exercise 1
+  var desti = document.getElementById("destination").value;
+  var arri = document.getElementById("arrival").value;
+  localStorage.setItem("destination", desti);
+  localStorage.setItem("arrival", arri);
+  //Get selected checkboxes
+  var i = 0;
+  function getData() {
+    while (i <= document.getElementsByClassName("checkboxes").length) {
+      if (document.getElementsByClassName("checkboxes")[i].checked == true) {
+        console.log("Box " + [i] + " is checked.");
+        localStorage.setItem("services" + [i], document.getElementsByClassName("checkboxes")[i].value);
+        console.log("Service added!");
+      }
+      i++;
     }
-    function printData() {
-    // check if there is saved data available from the first assignment, 
-    // and load them into a div with an id="sessionData"
-    var storage = document.getElementById("sessiondata");
-    storage.innerHTML = "Destination: " + localStorage.getItem("destination") + "<br>"
-                      + "Arrival: " + localStorage.getItem("arrival") + "<br>"
-                      + "Services: ";
-    printServices();
-    }
-    function printServices() {
+  }
+  //Exercise 2
+  function printData() {
+  // check if there is saved data available from the first assignment, 
+  // and load them into a div with an id="localdata"
+  var storage = document.getElementById("localdata");
+  storage.innerHTML = "Destination: " + localStorage.getItem("destination") + "<br>"
+                     + "Arrival: " + localStorage.getItem("arrival") + "<br>"
+                     + "Services: ";
+  printServices();
+  }
+  function printServices() {
     var s = 0;
-    var storage = document.getElementById("sessiondata");
-      //While local storage has services ("services" + [s]) -> add ("services" + [s]) to storage div
-      
-            console.log("Service added to storage div!");
-      while (s <= localStorage.length) {
-          if (localStorage.key(s).includes("services") == true) {
-            storage.innerHTML = storage.innerHTML + localStorage.getItem("services" + s) + " ";
-          }
-        s++;
-        }
+    var storage = document.getElementById("localdata");
+    //While local storage has services ("services" + [s]) -> add ("services" + [s]) to storage div
+    while (s <= localStorage.length) {
+      if (localStorage.key(s).includes("services") == true) {
+        storage.innerHTML = storage.innerHTML + localStorage.getItem("services" + s) + " ";
+      }
+    s++;
     }
+  } 
+  //Exercise 3
+  var desti2 = document.getElementById("destination2").value;
+  var arri2 = document.getElementById("arrival2").value;
+  sessionStorage.setItem("destination2", desti2);
+  sessionStorage.setItem("arrival2", arri2);
+  //Get selected checkboxes
+  var d = 0;
+  function sessionData() {
+    while (i <= document.getElementsByClassName("checkboxes2").length) {
+      if (document.getElementsByClassName("checkboxes2")[d].checked == true) {
+        console.log("Box " + d + " is checked. 2");
+        sessionStorage.setItem("services2" + d, document.getElementsByClassName("checkboxes2")[d].value);
+        console.log("Service added! 2");
+      }
+    d++;
+    }
+  }
     </script>
 </body>
 </html>
