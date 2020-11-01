@@ -94,14 +94,11 @@ restarts.</p>
         localStorage.setItem("destination", desti);
         localStorage.setItem("arrival", arri);
         //Get selected checkboxes
-        var checkbxs = document.getElementsByClassName("checkboxes");
         var i = 0;
     function getData() {
         while (i <= document.getElementsByClassName("checkboxes").length) {
           if (document.getElementsByClassName("checkboxes")[i].checked == true) {
             console.log("Box " + [i] + " is checked.");
-            //can i set multiple items under the same key "services"?
-            //if not, how do i add them to a list that doesn't exist yet?
             localStorage.setItem("services" + [i], document.getElementsByClassName("checkboxes")[i].value);
             console.log("Service added!");
           }
@@ -115,16 +112,19 @@ restarts.</p>
     storage.innerHTML = "Destination: " + localStorage.getItem("destination") + "<br>"
                       + "Arrival: " + localStorage.getItem("arrival") + "<br>"
                       + "Services: ";
+    printServices();
     }
-    var s = 0;
     function printServices() {
+    var s = 0;
+    var storage = document.getElementById("sessiondata");
       //While local storage has services ("services" + [s]) -> add ("services" + [s]) to storage div
+      
+            console.log("Service added to storage div!");
       while (s <= localStorage.length) {
           if (localStorage.key(s).includes("services") == true) {
-            storage.innerHTML = storage.innerHTML + localStorage.getItem(key(s));
-            console.log("Service added to storage div!");
-        s++;
+            storage.innerHTML = storage.innerHTML + localStorage.getItem("services" + s) + " ";
           }
+        s++;
         }
     }
     </script>
