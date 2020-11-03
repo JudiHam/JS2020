@@ -1,4 +1,19 @@
-<html><head><link href="/learning/styles/default.css" rel="stylesheet" type="text/css" /></head>
+<html>
+<head>
+<link href="/learning/styles/default.css" rel="stylesheet" type="text/css" />
+<style>
+    table {
+        width: 60%;
+        border-collapse: collapse;
+    }
+    table, td, th {
+        border: 3px solid aquamarine;
+    }
+    td {
+        padding: 5px;
+    }
+</style>
+</head>
 <body>
 <div>
 <h1>Workshop 7: Using AJAX and parsing XML</h1>
@@ -97,15 +112,16 @@ file to a div below (id=�quotes�). Here's another alternative: http://quotes
 <h2>Exercise 3: Parsing the XML</h2>
 </div>
 <div>
-<p>Continue working from exercise 2. Once you have injected the results, JavaScript to parse the XML/JSON-file and output the file contents in a nice HTML-table below. Add some styles to the table.</p>
+<p>Continue working from exercise 2. Once you have injected the results, use JavaScript to parse the XML/JSON-file and output the file contents in a nice HTML-table below. Add some styles to the table.</p>
 </div>
 <div>
-<p><input id="Fetch3" name="Fetch3" type="button" value="Button" /></p>
+<p><input id="Fetch3" name="Fetch3" type="button" value="Button" onClick="parseData2()" /></p>
 </div>
+<!--TABLE DIV-->
 <div>
 <div id="tabledata">
-<table border="1">
-<tbody>
+<table>
+<tbody id="tablebody">
 <tr>
 <td><strong>Quote</strong></td>
 <td><strong>Author</strong></td>
@@ -114,14 +130,11 @@ file to a div below (id=�quotes�). Here's another alternative: http://quotes
 <td>Here goes the quote data</td>
 <td>Here goes the author data</td>
 </tr>
-<tr>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
 </tbody>
 </table>
 </div>
 </div>
+<!--Table div ends.-->
 <div>
 </div>
 <div>
@@ -139,8 +152,8 @@ apps/tree/5%3A%20Asynchronous%20JavaScript%20(AJAX)%2Filtalehti.xml). Parse the 
 <li><a href="#">News heading 3</a></li>
 </ul>
 </div>
-<div><input id="Fetch3" name="Fetch3" type="button" value="Load YAHOO newsfeed" /></div>
-<div><input id="Fetch3" name="Fetch3" type="button" value="Load Iltalehti Newsfeed" /></div>
+<div><input id="Fetch4" name="Fetch3" type="button" value="Load YAHOO newsfeed" /></div>
+<div><input id="Fetch5" name="Fetch3" type="button" value="Load Iltalehti Newsfeed" /></div>
 <div>
 <div id="newsfeed">&nbsp;</div>
 </div>
@@ -172,6 +185,43 @@ apps/tree/5%3A%20Asynchronous%20JavaScript%20(AJAX)%2Filtalehti.xml). Parse the 
             }
         }
     }
+    //Am I supposed to parse the quotes from ex1 or more quotes from an external xml file with the ajax request? 
+    //I would need an xml file with quotes for this, the one in ex2 isn't one.
+    //So I'll do it with the quotes from ex1 that are in this file.
+    function parseData2() {
+        console.log("function called2");
+		var quotes = document.getElementsByTagName("quote");
+		var authors = document.getElementsByTagName("author");
+        console.log("quotes and authors defined2");
+        var table = document.getElementById("tablebody");
+        i = 0;
+        while (i < quotes.length) {
+            console.log("we are inside table loop2");
+			// find quote table and insert results there
+            table.innerHTML += "<tr>" + "<td>" + quotes[i].innerHTML + "</td>" + "<td>" + authors[i].innerHTML + "</td>" + "<tr>";
+        i++;
+        }
+        var xmlhttp = new XMLHttpRequest();
+        //Specify the data / url to be fetched
+        xmlhttp.open("GET", "http://quotes.rest/qod.xml", true);
+        xmlhttp.send();
+        xmlhttp.onreadystatechange = function() {
+            if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                var xmlDoc = xmlhttp.responseXML;
+				var quotes = xmlDoc.getElementsByTagName("quote");
+                var quote = quotes[0].innerHTML;
+                console.log(quote);
+                var authors = xmlDoc.getElementsByTagName("author");
+                var author = authors[0].innerHTML;
+                console.log(author);
+                table.innerHTML += "<tr>" + "<td>" + quote + "</td>" + "<td>" + author + "</td>" + "<tr>";
+            }
+        }
+    }
+
+    
+        
+    
 </script>
 </body>
 </html>
