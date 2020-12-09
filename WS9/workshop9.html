@@ -1,0 +1,110 @@
+<HTML>
+<style>
+body {
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	color: #333333;
+}
+
+div {
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+}
+table, tr, td{
+  border: 1px solid gray;
+  width: 50%;
+}
+img {
+    position: relative;
+    left:0px;
+}
+
+</style>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous">
+</script>
+
+<body>
+
+<h1>Workshop 9: Using jQuery</h1><hr />
+
+<h2>Exercise 3: Effects and animation</h2>
+<p>See: https://api.jquery.com/category/effects/</p>
+<ul>
+  <p>Add the following functionality to buttons below:</p>
+  <p>
+    <input type="button" name="button" id="button" value="Fade in heading">
+    <input type="button" name="button2" id="button2" value="Fade out heading">
+    <input type="button" name="button3" id="button3" value="Slide up contents">
+    <input type="button" name="button4" id="button4" value="Slide down contents">
+    <input type="button" name="button5" id="button5" value="Custom animation">
+  </p>
+  <li>Fade in the main heading of the page</li>
+  <li>Fade out the main heading of the page</li>
+  <li>SlideUp the main contents of the page</li>
+  <li>SlideDown the main contents of the page</li>
+  <li>Study the animate() -function. Write an animation sequence of your own on the page</li>
+</ul>
+<p>&nbsp;</p>
+<span id="content">
+  <h2>Exercise 4: Ajax</h2>
+<li>First try Ajax with console. Use load() -function</li>
+to inject content from the web (ex. http://www.iltalehti.fi/rss.xml) into the div below.
+<li>Then write a JavaScript function, which will fire when the pulldown menu item is changed. Each selection loads a different content
+from web to the div below. </li>
+<li>Change the pulldown item names accordingly as well.
+  <p>Select an item from the list.</p>
+  <select name="mySelect" id="mySelect" onchange="">
+    <option value="IS">Ilta-Sanomat
+    <option value="Yle">Yle Uutiset
+    <option value="HS">Helsingin Sanomat
+  </select>
+  <br>
+  <br>
+  <div id="ajax" style="border: 1px solid black; width: 400px;">
+
+  </div>
+</li>
+<h2>&nbsp;</h2>
+</span>
+<script>
+  $("#button").click(function(){
+    $("h1").hide();
+    $("h1").fadeIn();
+  });
+  $("#button2").click(function(){
+    $("h1").fadeOut();
+  });
+  $("#button3").click(function(){
+    $("#content").slideUp();
+    $("#content").show();
+  });
+  $("#button4").click(function(){
+    $("#content").hide();
+    $("#content").slideDown();
+  });
+  $("#button5").click(function(){
+    $("h1").animate({
+      fontSize: "50px",
+      paddingLeft: "30%",
+      paddingTop: "40px",
+      paddingBottom: "40px"
+    });
+  });
+
+  $("#mySelect").change(function(){
+    var selected = $("#mySelect").children("option:selected").val();
+    if (selected == "IS"){
+      $("#ajax").load("http://www.iltalehti.fi/rss.xml");
+    } else if (selected == "Yle"){
+      $("#ajax").load("https://feeds.yle.fi/uutiset/v1/majorHeadlines/YLE_UUTISET.rss");
+    } else if (selected == "HS"){
+      $("#ajax").load("https://www.hs.fi/rss/tuoreimmat.xml");
+    }
+  });
+</script>
+</body>
+</html>
