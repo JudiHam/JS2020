@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>   
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet"> 
+    <script>
+        //1. First we ask for the data (Ajax call)
+        function fetchData() {
+            //url depending on selecter theater
+            if (document.getElementById("areas").value == "Iso Omena") {
+                var url = "https://www.finnkino.fi/xml/Schedule/?area=1039";
+            } else if (document.getElementById("areas").value == "Sello") {
+                var url = "https://www.finnkino.fi/xml/Schedule/?area=1038";
+            } else if (document.getElementById("areas").value == "Itäkeskus") {
+                var url = "https://www.finnkino.fi/xml/Schedule/?area=1045";
+            } else if (document.getElementById("areas").value == "HKinopalatsi") {
+                var url = "https://www.finnkino.fi/xml/Schedule/?area=1031";
+            } else if (document.getElementById("areas").value == "Maxim") {
+                var url = "https://www.finnkino.fi/xml/Schedule/?area=1032";
+            } else if (document.getElementById("areas").value == "Tennispalatsi") {
+                var url = "https://www.finnkino.fi/xml/Schedule/?area=1033";
+            } else if (document.getElementById("areas").value == "Flamingo") {
+                var url = "https://www.finnkino.fi/xml/Schedule/?area=1013";
+            } else if (document.getElementById("areas").value == "Fantasia") {
+                var url = "https://www.finnkino.fi/xml/Schedule/?area=1015";
+            } else if (document.getElementById("areas").value == "Scala") {
+                var url = "https://www.finnkino.fi/xml/Schedule/?area=1016";
+            } else if (document.getElementById("areas").value == "Kuvapalatsi") {
+                var url = "https://www.finnkino.fi/xml/Schedule/?area=1017";
+            } else if (document.getElementById("areas").value == "Strand") {
+                var url = "https://www.finnkino.fi/xml/Schedule/?area=1041";
+            } else if (document.getElementById("areas").value == "Plaza") {
+                var url = "https://www.finnkino.fi/xml/Schedule/?area=1018";
+            } else if (document.getElementById("areas").value == "Promenadi") {
+                var url = "https://www.finnkino.fi/xml/Schedule/?area=1019";
+            } else if (document.getElementById("areas").value == "Cine Atlas") {
+                var url = "https://www.finnkino.fi/xml/Schedule/?area=1034";
+            } else if (document.getElementById("areas").value == "Plevna") {
+                var url = "https://www.finnkino.fi/xml/Schedule/?area=1035";
+            } else if (document.getElementById("areas").value == "TKinopalatsi") {
+                var url = "https://www.finnkino.fi/xml/Schedule/?area=1022";
+            }
+            //create AJAX request
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+            //If request sent succesfully
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    var xmlDoc = xmlhttp.responseXML;  
+                    //select the tags that we want to display
+                    var starttimes = xmlDoc.getElementsByTagName("dttmShowStart");
+                    var endtimes = xmlDoc.getElementsByTagName("dttmShowEnd");
+                    var movienames = xmlDoc.getElementsByTagName("OriginalTitle");
+                    var posters = xmlDoc.getElementsByTagName("EventMediumImagePortrait");
+                    var theatre = xmlDoc.getElementsByTagName("Theatre");
+                    var audits = xmlDoc.getElementsByTagName("TheatreAuditorium");
+                    var pres = xmlDoc.getElementsByTagName("PresentationMethod");
+                    var langs = xmlDoc.getElementsByTagName("PresentationMethodAndLanguage");  
+                    var genres = xmlDoc.getElementsByTagName("Genres");
+                    //parse the data
+                    var i = 0;
+                    while (i < starttimes.length) {
+                        document.getElementById("dataspan").innerHTML += "<div id='wrapper'>" 
+                                                                            + "<div id='poster' class='box'>" + "<img src='" + posters[i].innerHTML +"'>"
+                                                                            + "</div>"
+                                                                            + "<div id='info' class='box'>"
+                                                                                + "<h3 id='movienames'>" + movienames[i].innerHTML + "</h3>" 
+                                                                                + pres[i].innerHTML + "<br>"
+                                                                                + starttimes[i].innerHTML.substring(11, 16) + " - " + endtimes[i].innerHTML.substring(11, 16) + " (arvioitu päättymisaika)" + "<br>"
+                                                                                + theatre[i].innerHTML + ", " + audits[i].innerHTML + "<br>"
+                                                                                + "Kieli: " + langs[i].innerHTML.substring(3, 25) + "<br>"
+                                                                                + "Genre: " + genres[i].innerHTML
+                                                                            + "</div>"
+                                                                       + "</div>";
+                    i++;
+                    }
+                }
+            }
+        }
+         
+    </script>
+  </head>
+  <body>
+    <style>
+        body {
+            background-color: rgb(0, 0, 0);
+            color: white;
+            font-family: 'Quicksand', sans-serif;
+        }
+        #header {
+            text-align: center;
+        }
+        #areas {
+            padding: 3px;
+        }
+        #areas, button {
+            font-family: 'Quicksand', sans-serif;
+            color:rgb(0, 0, 0);
+            font-weight: bolder;
+            border-radius: 3px;
+            border: none;
+        }
+        button {
+            background-color: rgb(243, 182, 50);
+            padding: 5px 8px;
+        }
+        #wrapper {
+            width: 800px;
+            height: 230px;
+            margin: 0 auto 10px auto;
+            background-color: rgb(243, 182, 50);
+        }
+        .box {
+           display: inline-block; 
+            vertical-align: middle;
+        }
+        img {
+            height: 200px;
+            margin: 15px;  
+        }
+        #info {
+            height: 200px;
+        }
+        #movienames {
+            font-size: 210%;
+            margin: 0 0 50px 0;
+        }
+
+      </style>
+    <div id="header">
+    <h1>Tervetuloa Finnkinon elokuvaohjelmistoon!</h1>
+    <label for="areas">Valitse alla olevasta listasta teatteri:</label>
+    <br><br>
+    <select name="areas" id="areas">
+        <option value="Iso Omena">Espoo: Iso Omena</option>
+        <option value="Sello">Espoo: Sello</option>
+        <option value="Itäkeskus">Helsinki: Itäkeskus</option>
+        <option value=" HKinopalatsi">Helsinki: Kinopalatsi</option>
+        <option value="Maxim">Helsinki: Maxim</option>
+        <option value="Tennispalatsi">Helsinki: Tennispalatsi</option>
+        <option value="Flamingo">Vantaa: Flamingo</option>
+        <option value="Fantasia">Jyväskylä: Fantasia</option>
+        <option value="Scala">Kuopio: Scala</option>
+        <option value="Kuvapalatsi">Lahti: Kuvapalatsi</option>
+        <option value="Strand">Lappeenranta: Strand</option>
+        <option value="Plaza">Oulu: Plaza</option>
+        <option value="Promenadi">Pori: Promenadi</option>
+        <option value="Cine Atlas">Tampere: Cine Atlas</option>
+        <option value="Plevna">Tampere: Plevna</option>
+        <option value="TKinopalatsi">Turku: Kinopalatsi</option>
+    </select>
+    <button type="button" onclick="fetchData()">Hae päivän ohjelma</button>
+    </div>
+    <br><br>
+    <span id="dataspan"></span>
+  </body>
+</html>
